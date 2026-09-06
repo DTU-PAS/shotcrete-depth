@@ -1,17 +1,21 @@
 <h1 align="center">ShotcreteDepth: A Bi-modal Dataset for Robust Robotic Depth Perception in Shotcrete Construction Environments</h1>
 
+<p align="center">
+  <a href="https://arxiv.org/pdf/2606.23152"><img alt="Paper (arXiv)" src="https://img.shields.io/badge/Read-Paper_(arXiv)-yellow"></a>
+  <a href="https://huggingface.co/datasets/dtu-pcas/shotcrete-depth"><img alt="HuggingFace" src="https://img.shields.io/badge/Download-HuggingFace-blue"></a>
+</p>
 
-This is the official implementation of "ShotcreteDepth: A Bi-modal Dataset for Robust Robotic Depth Perception in Shotcrete Construction Environments" authored by 
+This is the official repository for "ShotcreteDepth: A Bi-modal Dataset for Robust Robotic Depth Perception in Shotcrete Construction Environments", presented at [Towards Autonomous Robotic Systems](https://taros-conference.org) 2026 and authored by 
 [Jakub Gregorek](https://scholar.google.com/citations?user=Afmk1FYAAAAJ), 
 [Lars Arnold Dethlefsen](https://github.com/MrArnoldi),
 [Patrick Schmidt](https://scholar.google.com/citations?user=phH_B4sAAAAJ),
 Mads Essenbæk,
-Jonas Flink Bentzen
+Jonas Flink Bentzen,
 and [Lazaros Nalpantidis](https://lanalpa.github.io).
 
 ## Dataset
 
-We are releasing the "ShotcreteDepeth" dataset capturing a shotcreting and construction environment environment.
+We are releasing the "ShotcreteDepeth" dataset capturing a shotcreting and construction environment.
 The dataset is aimed at development and evaluation of stereo matching, depth completion and depth estimation methods.
 
 ### Download
@@ -21,6 +25,14 @@ We are providing the following files:
 
 - [RAW dataset & annotations (shotcrete-depth-raw.zip, 40 GB)](https://data.dtu.dk/ndownloader/files/64410741) - can be edited by the provided annotation tool
 - [Evaluation Set (shotcrete-depth.zip, 789 MB)](https://data.dtu.dk/ndownloader/files/64410525) - only the evaluation set composed of 220 samples
+
+Alternatively, the evaluation set can be retrieved from HuggingFace 🤗.
+
+```python
+from datasets import load_dataset, Split
+ds = load_dataset("dtu-pcas/shotcrete-depth", split=Split.TEST).with_format("numpy")
+```
+Since the dataset hosted on HuggingFace does not include the calibration files, we are providing the camera's focal length (1075.6800537109375) and the stereo baseline (0.15944470465183258) here.
 
 The dataset is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.en) license.
 
@@ -155,6 +167,20 @@ The resulting H5 files contain the following data:
 - stereo-confidence
 - velodyne
 - velodyne-annotations
+
+# Citation
+
+```bibtex
+@misc{shotcretedepth,
+      title={ShotcreteDepth: A Bi-modal Dataset for Robust Robotic Depth Perception in Shotcrete Construction Environments}, 
+      author={Jakub Gregorek and Lars Arnold Dethlefsen and Patrick Schmidt and Mads Essenbæk and Jonas Flink Bentzen and Lazaros Nalpantidis},
+      year={2026},
+      eprint={2606.23152},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2606.23152}, 
+}
+```
 
 # Licensing
 
